@@ -12,6 +12,9 @@ app.get('/api/whoami', function(req,res){
 	let language = patternLang.exec(req.headers["accept-language"])[0];
 	let software = req.headers['user-agent'];
 	let data = { ipaddress , language , software };
+
+	console.log(req.connection.remoteAddress);
+
 	res.json(data);
 });
 
