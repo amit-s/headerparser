@@ -6,7 +6,15 @@ let app = express();
 app.set('port', (process.env.PORT || 3000));
 
 app.get('/', function(req,res){
-	res.end('You made it!!!');
+
+	let patternIP = /(\d+\.){3}\d+/
+	let ipaddress = patternIP.exec(req.ip)[0];
+	let patternLang = /\w+\W*\w*/;
+	let language = patternLang.exec(req.headers["accept-language"])[0];
+	let software = req.headers['user-agent'];
+	let data = { ipaddress , language , software };
+	res.json(data);
+
 });
 
 app.listen(app.get('port'), function(){
