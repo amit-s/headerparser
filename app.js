@@ -5,7 +5,7 @@ let app = express();
 
 app.set('port', (process.env.PORT || 3000));
 
-app.get('/', function(req,res){
+app.get('/api/whoami', function(req,res){
 	let patternIP = /(\d+\.){3}\d+/
 	let ipaddress = patternIP.exec(req.ip)[0];
 	let patternLang = /\w+\W*\w*/;
